@@ -1,6 +1,7 @@
 #pragma rtGlobals=3		// Use modern global access method and strict wave access.
 #pragma version=1.1
 
+#include ":ParseDateTime"
 // Added GetIndex.  Useful for making tables of iterations and then finding the proper index.
 
 Function GetIndex(IterationWave,TargetIteration)
@@ -145,7 +146,12 @@ Function RemoveWaveNoteString(TargetWave,TargetName)
 End
 
 
-
+Function GetAbsoluteTimeWN(TargetWave)
+	Wave TargetWave
+	String DateString=GetWaveNoteString(TargetWave,"Date")
+	String TimeString=GetWaveNoteString(TargetWave,"Time")
+	Return ParseDateTime(DateString,TimeString)
+End
 
 Function/Wave MakeForceWave(DefV,[ForceWaveName])
 	Wave DefV
