@@ -10,9 +10,11 @@ Function LoadSavedWaves(SavedDF,[LoadToDF,ClearWavesInLoadToDF])
 	If(ParamIsDefault(LoadToDF))
 		LoadToDF=GetDataFolder(1)
 	EndIf
-	
-	SetDataFolder $LoadToDF
-	
+	If(!DataFolderExists(SavedDF)||!DataFolderExists(LoadToDF))
+		Return 0
+	EndIF
+
+	SetDataFolder $LoadToDF	
 	IF(ClearWavesInLoadToDF)
 		KillWaves/A/Z
 	EndIF
@@ -29,6 +31,8 @@ Function LoadSavedWaves(SavedDF,[LoadToDF,ClearWavesInLoadToDF])
 	EndFor
 	
 	SetDataFolder $LoadToDF
+	
+	Return 1
 End
 
 Function SaveWavesToDF(SavedToDF,[LoadFromDF])
