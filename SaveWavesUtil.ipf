@@ -44,7 +44,7 @@ Function SaveWavesToDF(SavedToDF,[LoadFromDF])
 	
 	SetDataFolder $LoadFromDF
 	String WaveNames = WaveList("*", ";" ,"" )
-	NewDataFolder/O $SavedToDF
+	NewDataFolder/O $SavedToDF; AbortOnRTE
 	
 	Variable NumWavesToCopy=ItemsInList(WaveNames, ";")
 	Variable Counter=0
