@@ -100,6 +100,11 @@ Function/S StandardCypherWaveNote()
 	If(WaveExists(VersionWave))
 		OutputString+=  "AR Version="+VersionWave[%'AR Version']+";\r"
 
+	EndIf	
+	Wave EnvironWave=root:packages:MFP3D:Main:Variables:EnvironVariablesWave
+	If(WaveExists(VersionWave))
+		OutputString+=  "SampleTemperatureInCelsius="+num2str(EnvironWave[%EnvironSampleTemp])+";\r"
+
 	EndIf
 	Return OutputString
 End
